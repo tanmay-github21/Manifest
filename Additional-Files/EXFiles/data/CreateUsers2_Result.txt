@@ -1,0 +1,130 @@
+Compiled successfully.
+Error: System.DmlException: Insert failed. First exception on row 0; first error: LICENSE_LIMIT_EXCEEDED, License Limit Exceeded - Chatter External, Salesforce: []
+Error: AnonymousBlock: line 27, column 1
+
+54.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO
+Execute Anonymous: List<User> users = new List<User>();
+Execute Anonymous: String usernameRandomBit = String.valueOf(Math.random()).substring(2, 14);
+Execute Anonymous: Id chatterProfileId = [SELECT Id FROM Profile WHERE Name = 'Chatter External User' LIMIT 1].Id;
+Execute Anonymous: Id trainingProfileId = [SELECT Id FROM Profile WHERE Name = 'Training User' LIMIT 1].Id;
+Execute Anonymous: 
+Execute Anonymous: // Training users
+Execute Anonymous: users.add(new User(Alias = 'ELTOROIT', Email = 'ELTOROIT.awtraining@example.com', FirstName = 'Andres', LastName = 'Perez', ProfileId = trainingProfileId));
+Execute Anonymous: 
+Execute Anonymous: users.add(new User(Alias='JSheprd', Email = 'JShepherd.awtraining@example.com', firstName='Jane', lastName='Shepherd', ProfileId=trainingProfileId));
+Execute Anonymous: // Instructors
+Execute Anonymous: users.add(new User(Alias='AKATO', FirstName = 'Akira', LastName = 'Kato', Email = 'akato.awtraining@example.com', ProfileId = chatterProfileId, Is_Instructor__c = true));
+Execute Anonymous: 
+Execute Anonymous: users.add(new User(Alias='EPETERS', FirstName = 'Eugene', LastName = 'Peters', Email = 'epeters.awtraining@example.com', ProfileId = chatterProfileId, Is_Instructor__c = true));
+Execute Anonymous: 
+Execute Anonymous: 
+Execute Anonymous: // Populate other fields
+Execute Anonymous: for (User u : users) {
+Execute Anonymous: 	u.CommunityNickname = u.Alias + '.awtraining';
+Execute Anonymous: 	u.EmailEncodingKey = 'ISO-8859-1';
+Execute Anonymous: 	u.LanguageLocaleKey = 'en_US';
+Execute Anonymous: 	u.LocaleSidKey = 'en_US';
+Execute Anonymous: 	u.TimeZoneSidKey = 'America/Los_Angeles';
+Execute Anonymous: 	u.Username = u.Alias + '.' + usernameRandomBit + '@awtraining.com';
+Execute Anonymous: }
+Execute Anonymous: 
+Execute Anonymous: // Perform the DML
+Execute Anonymous: insert users;
+Execute Anonymous: 
+Execute Anonymous: //Enable debug mode for the default scratch org user
+Execute Anonymous: User defaultUser = [SELECT Id FROM User WHERE Name = 'User User'];
+Execute Anonymous: defaultUser.UserPreferencesUserDebugModePref = true;
+Execute Anonymous: update defaultUser;
+09:16:59.55 (55683869)|USER_INFO|[EXTERNAL]|005N000000BKqvH|test-kdmowyghja4f@example.com|(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)|GMT-07:00
+09:16:59.55 (55762736)|EXECUTION_STARTED
+09:16:59.55 (55776114)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+09:16:59.55 (377250772)|EXCEPTION_THROWN|[27]|System.DmlException: Insert failed. First exception on row 0; first error: LICENSE_LIMIT_EXCEEDED, License Limit Exceeded - Chatter External, Salesforce: []
+09:16:59.55 (379653011)|FATAL_ERROR|System.DmlException: Insert failed. First exception on row 0; first error: LICENSE_LIMIT_EXCEEDED, License Limit Exceeded - Chatter External, Salesforce: []
+
+AnonymousBlock: line 27, column 1
+09:16:59.379 (379699696)|CUMULATIVE_LIMIT_USAGE
+09:16:59.379 (379699696)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 2 out of 100
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 1 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 4 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+09:16:59.379 (379699696)|CUMULATIVE_LIMIT_USAGE_END
+
+09:16:59.55 (379791312)|CODE_UNIT_FINISHED|execute_anonymous_apex
+09:16:59.55 (379808652)|EXECUTION_FINISHED
+
+Compiled successfully.
+Error: System.DmlException: Insert failed. First exception on row 0; first error: LICENSE_LIMIT_EXCEEDED, License Limit Exceeded - Chatter External, Salesforce: []
+Error: AnonymousBlock: line 27, column 1
+
+54.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO
+Execute Anonymous: List<User> users = new List<User>();
+Execute Anonymous: String usernameRandomBit = String.valueOf(Math.random()).substring(2, 14);
+Execute Anonymous: Id chatterProfileId = [SELECT Id FROM Profile WHERE Name = 'Chatter External User' LIMIT 1].Id;
+Execute Anonymous: Id trainingProfileId = [SELECT Id FROM Profile WHERE Name = 'Training User' LIMIT 1].Id;
+Execute Anonymous: 
+Execute Anonymous: // Training users
+Execute Anonymous: users.add(new User(Alias = 'ELTOROIT', Email = 'ELTOROIT.awtraining@example.com', FirstName = 'Andres', LastName = 'Perez', ProfileId = trainingProfileId));
+Execute Anonymous: 
+Execute Anonymous: users.add(new User(Alias='JSheprd', Email = 'JShepherd.awtraining@example.com', firstName='Jane', lastName='Shepherd', ProfileId=trainingProfileId));
+Execute Anonymous: // Instructors
+Execute Anonymous: users.add(new User(Alias='AKATO', FirstName = 'Akira', LastName = 'Kato', Email = 'akato.awtraining@example.com', ProfileId = chatterProfileId, Is_Instructor__c = true));
+Execute Anonymous: 
+Execute Anonymous: users.add(new User(Alias='EPETERS', FirstName = 'Eugene', LastName = 'Peters', Email = 'epeters.awtraining@example.com', ProfileId = chatterProfileId, Is_Instructor__c = true));
+Execute Anonymous: 
+Execute Anonymous: 
+Execute Anonymous: // Populate other fields
+Execute Anonymous: for (User u : users) {
+Execute Anonymous: 	u.CommunityNickname = u.Alias + '.awtraining';
+Execute Anonymous: 	u.EmailEncodingKey = 'ISO-8859-1';
+Execute Anonymous: 	u.LanguageLocaleKey = 'en_US';
+Execute Anonymous: 	u.LocaleSidKey = 'en_US';
+Execute Anonymous: 	u.TimeZoneSidKey = 'Asia/Kolkata';
+Execute Anonymous: 	u.Username = u.Alias + '.' + usernameRandomBit + '@awtraining.com';
+Execute Anonymous: }
+Execute Anonymous: 
+Execute Anonymous: // Perform the DML
+Execute Anonymous: insert users;
+Execute Anonymous: 
+Execute Anonymous: //Enable debug mode for the default scratch org user
+Execute Anonymous: User defaultUser = [SELECT Id FROM User WHERE Name = 'User User'];
+Execute Anonymous: defaultUser.UserPreferencesUserDebugModePref = true;
+Execute Anonymous: update defaultUser;
+04:39:23.171 (171627080)|USER_INFO|[EXTERNAL]|005N000000BKqvH|test-kdmowyghja4f@example.com|(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)|GMT-07:00
+04:39:23.171 (171651069)|EXECUTION_STARTED
+04:39:23.171 (171655810)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+04:39:23.171 (361661995)|EXCEPTION_THROWN|[27]|System.DmlException: Insert failed. First exception on row 0; first error: LICENSE_LIMIT_EXCEEDED, License Limit Exceeded - Chatter External, Salesforce: []
+04:39:23.171 (363068048)|FATAL_ERROR|System.DmlException: Insert failed. First exception on row 0; first error: LICENSE_LIMIT_EXCEEDED, License Limit Exceeded - Chatter External, Salesforce: []
+
+AnonymousBlock: line 27, column 1
+04:39:23.363 (363104539)|CUMULATIVE_LIMIT_USAGE
+04:39:23.363 (363104539)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 2 out of 100
+  Number of query rows: 2 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 1 out of 150
+  Number of Publish Immediate DML: 0 out of 150
+  Number of DML rows: 4 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+04:39:23.363 (363104539)|CUMULATIVE_LIMIT_USAGE_END
+
+04:39:23.171 (363158331)|CODE_UNIT_FINISHED|execute_anonymous_apex
+04:39:23.171 (363167540)|EXECUTION_FINISHED
+
